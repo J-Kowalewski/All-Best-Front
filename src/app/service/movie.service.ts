@@ -1,5 +1,4 @@
 import {Movie} from "../model/movie";
-import {GetMoviesResponse} from "../dto/get-movies-response";
 import {GetMovieResponse} from "../dto/get-movie-response";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
@@ -19,11 +18,14 @@ export class MovieService {
   }
 
   getBestMovies(): Observable<Movie[]> {
-    return this.http.get<GetMoviesResponse>('http://localhost:8080//api/v1/movie/bestList')
+    return this.http.get('http://localhost:8080//api/v1/movie/bestList')
       .pipe(map(value => {
-        const movies: Movie[] = [];
-        value.movies.forEach(movie=>{
-          movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))
+        let movies: Movie[] = [];
+
+        fetch('http://localhost:8080//api/v1/movie/bestList').then(res=>res.json()).then(data=>{
+          data.forEach((movie: GetMovieResponse)=>{
+            movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))
+          })
         })
         return movies;
       }));
@@ -31,13 +33,7 @@ export class MovieService {
   getMovieByGenre(genre: string): Observable<Movie> {
     return this.http.get<GetMovieResponse>('http://localhost:8080//api/v1/movie/'+genre)
       .pipe(map(value => {
-        const movie: Movie = new Movie(value.title, value.year, value.genre, value.description, value.siteLink);
-        // movie.description = value.description;
-        // movie.year=value.year;
-        // movie.title=value.year;
-        // movie.genre=value.genre;
-        // movie.siteLink=value.siteLink;
-        return movie;
+        return new Movie(value.title, value.year, value.genre, value.description, value.siteLink);
       }));
   }
   getBestMovie(): Observable<Movie>{

@@ -1,0 +1,14 @@
+.flexbox{
+  margin-top: 10px;
+  display: flex;
+  left: auto;
+  right: auto;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.summary{
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}

@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {BestProductComponent} from "./best-product/best-product.component";
 import {MovieService} from "./service/movie.service";
 import {GetMovieResponse} from "./dto/get-movie-response";
 
@@ -17,9 +16,17 @@ export class AppComponent implements OnInit{
   }
   movie!:GetMovieResponse;
   ngOnInit(): void {
-    this.service.getMovie("http://localhost:8080//api/v1/movie/best").subscribe(value => {
-      this.movie=value;
-      console.log(value);
-    })
+
+  }
+
+  onClick() {
+    if(this.router.url!="/product"){
+      this.router.navigateByUrl("/product");
+    }
+    else{
+      this.router.navigateByUrl('/genre', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/product'])
+      })
+    }
   }
 }

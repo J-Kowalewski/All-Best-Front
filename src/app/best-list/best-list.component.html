@@ -1,3 +1,8 @@
-<div>
-  <app-display-movie *ngFor="let movie of movies" [movie]="movie"></app-display-movie>
+<div class="summary">
+  <a>Best movies of all times</a>
+</div>
+<div class="flexbox">
+  <ul>
+    <app-display-movie *ngFor="let movie of movies" [movie]="movie"></app-display-movie>
+  </ul>
 </div>

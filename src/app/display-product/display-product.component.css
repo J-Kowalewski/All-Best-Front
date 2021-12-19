@@ -1,0 +1,9 @@
+.product{
+  padding: 14px;
+  width: 140px;
+  overflow-wrap: break-word;
+}
+.product img{
+  width: 140px;
+  height: auto;
+}

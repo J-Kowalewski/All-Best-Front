@@ -22,11 +22,13 @@ export class ProductService {
     return this.http.get<GetProductsResponse>('http://localhost:8080//api/v1/product/best/'+searchTerm)
       .pipe(map(value => {
         const products: Product[] = [];
-        value.products.forEach(product=>{
-          products.push(new Product(product.title,product.price,product.shippingFrom,product.imgSrc,product.siteLink))
+
+        fetch('http://localhost:8080//api/v1/product/best/'+searchTerm).then(res=>res.json()).then(data=>{
+          data.forEach((product: GetProductResponse)=>{
+            products.push(new Product(product.title,product.price,product.shippingFrom,product.imgSrc,product.siteLink))
+          })
         })
         return products;
       }));
   }
-
 }

@@ -27,7 +27,7 @@
   order: 2;
 }
 .content {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 .toolbar a:hover:not(.title,.right){
   border-bottom: solid #5BA3EC;
