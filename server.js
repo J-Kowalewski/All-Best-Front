@@ -10,10 +10,10 @@ const express = require('express');
 const app = express();
 
 app.use(requireHTTPS);
-app.use(express.static('./dist/all-best-front'));
+app.use(express.static('./dist/All-Best-Front'));
 
 app.get('/*', (req, res) =>
-  res.sendFile('index.html', {root: 'dist/all-best-front'}),
+  res.sendFile('index.html', {root: 'dist/All-Best-Front/'}),
 );
 
 app.listen(process.env.PORT || 8080);
