@@ -29,6 +29,9 @@
 .content {
   margin-top: 70px;
 }
-.toolbar a:hover:not(.title,.right){
+.toolbar a:hover:not(.right){
   border-bottom: solid #5BA3EC;
+}
+.bestMovie {
+  text-decoration: none;
 }

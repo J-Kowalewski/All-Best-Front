@@ -1,6 +1,6 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <a class="title">ALL BEST</a>
+  <a routerLink="" class="title">ALL BEST</a>
   <a routerLink="/genre">Genre</a>
   <a routerLink="/list">Best</a>
   <a class="right">
@@ -16,5 +16,13 @@
 </div>
 
 <div class="content" role="main">
+  <ul class="bestMovie" *ngIf="isHomePage()">
+    <li> BEST MOVIE EVER</li>
+    <li>{{bestMovie.title}}</li>
+    <li>{{bestMovie.year}}</li>
+    <li>{{bestMovie.genre}}</li>
+    <li>{{bestMovie.description}}</li>
+    <a href="{{bestMovie.siteLink}}">Link</a>
+  </ul>
   <router-outlet></router-outlet>
 </div>

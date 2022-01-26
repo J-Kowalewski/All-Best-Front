@@ -21,7 +21,6 @@ export class MovieService {
     return this.http.get('http://localhost:8080//api/v1/movie/bestList')
       .pipe(map(value => {
         let movies: Movie[] = [];
-
         fetch('http://localhost:8080//api/v1/movie/bestList').then(res=>res.json()).then(data=>{
           data.forEach((movie: GetMovieResponse)=>{
             movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))

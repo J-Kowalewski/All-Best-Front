@@ -11,6 +11,8 @@ export class BestListComponent implements OnInit {
 
   private _movies!: Movie[];
 
+  private _bestMovie!: Movie;
+
   get movies(): Movie[]{
     return this._movies;
   }
@@ -25,6 +27,9 @@ export class BestListComponent implements OnInit {
     this.service.getBestMovies().subscribe(movies=>{
       this._movies=movies;
     })
+    this.service.getBestMovie().subscribe((movie=>{
+      this._bestMovie = movie;
+    }))
   }
 
 }
