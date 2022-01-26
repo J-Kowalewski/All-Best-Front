@@ -18,10 +18,10 @@ export class MovieService {
   }
 
   getBestMovies(): Observable<Movie[]> {
-    return this.http.get('http://allbest-api.herokuapp.com/api/v1/movie/bestList')
+    return this.http.get('https://allbest-api.herokuapp.com/api/v1/movie/bestList')
       .pipe(map(value => {
         let movies: Movie[] = [];
-        fetch('http://allbest-api.herokuapp.com/api/v1/movie/bestList').then(res=>res.json()).then(data=>{
+        fetch('https://allbest-api.herokuapp.com/api/v1/movie/bestList').then(res=>res.json()).then(data=>{
           data.forEach((movie: GetMovieResponse)=>{
             movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))
           })
@@ -30,13 +30,13 @@ export class MovieService {
       }));
   }
   getMovieByGenre(genre: string): Observable<Movie> {
-    return this.http.get<GetMovieResponse>('http://allbest-api.herokuapp.com/api/v1/movie/'+genre)
+    return this.http.get<GetMovieResponse>('https://allbest-api.herokuapp.com/api/v1/movie/'+genre)
       .pipe(map(value => {
         return new Movie(value.title, value.year, value.genre, value.description, value.siteLink);
       }));
   }
   getBestMovie(): Observable<Movie>{
-    return this.http.get<GetMovieResponse>('http://allbest-api.herokuapp.com/api/v1/movie/best')
+    return this.http.get<GetMovieResponse>('https://allbest-api.herokuapp.com/api/v1/movie/best')
       .pipe(map(value => {
         return new Movie(value.title, value.year, value.genre, value.description, value.siteLink);
       }))
