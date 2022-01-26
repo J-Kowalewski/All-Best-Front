@@ -19,11 +19,11 @@ export class ProductService {
   }
 
   getProductsByTerm(searchTerm: string): Observable<Product[]> {
-    return this.http.get<GetProductsResponse>('http://localhost:8080//api/v1/product/best/'+searchTerm)
+    return this.http.get<GetProductsResponse>('http://allbest-api.herokuapp.com/api/v1/product/best/'+searchTerm)
       .pipe(map(value => {
         const products: Product[] = [];
 
-        fetch('http://localhost:8080//api/v1/product/best/'+searchTerm).then(res=>res.json()).then(data=>{
+        fetch('http://allbest-api.herokuapp.com/api/v1/product/best/'+searchTerm).then(res=>res.json()).then(data=>{
           data.forEach((product: GetProductResponse)=>{
             products.push(new Product(product.title,product.price,product.shippingFrom,product.imgSrc,product.siteLink))
           })

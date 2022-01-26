@@ -38,4 +38,8 @@ export class AppComponent implements OnInit{
   isHomePage(): boolean {
     return this.router.url=="/"
     }
+
+  btnClick() {
+    window.open(this.bestMovie.siteLink, "_blank");
+  }
 }

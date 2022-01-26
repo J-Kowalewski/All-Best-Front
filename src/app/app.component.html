@@ -17,12 +17,12 @@
 
 <div class="content" role="main">
   <ul class="bestMovie" *ngIf="isHomePage()">
-    <li> BEST MOVIE EVER</li>
+    <li> BEST MOVIE EVER BY FILMWEB</li>
     <li>{{bestMovie.title}}</li>
     <li>{{bestMovie.year}}</li>
     <li>{{bestMovie.genre}}</li>
     <li>{{bestMovie.description}}</li>
-    <a href="{{bestMovie.siteLink}}">Link</a>
+    <button type="button" (click)="btnClick();">Show</button>
   </ul>
   <router-outlet></router-outlet>
 </div>
