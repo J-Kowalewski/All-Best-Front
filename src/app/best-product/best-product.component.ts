@@ -856,6 +856,12 @@ export class BestProductComponent implements OnInit {
     ["ₓ","x"]
     ]);
 
+  /**
+   * Changes all non latin characters to their latin counterparts
+   * @param {string} word
+   * @returns {string}
+   * @private
+   */
   private transliterate(word: string){
     return word.split('').map((char) => {
       if(this.a.has(char)) return this.a.get(char)
