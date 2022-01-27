@@ -870,6 +870,14 @@ export class BestProductComponent implements OnInit {
   }
 
   /**
+   * Checks if string contains only spaces
+   * @param str
+   * @returns {boolean}
+   */
+  private onlySpaces(str :string) {
+    return str.trim().length === 0;
+  }
+  /**
    * On class initialization calls getProductsByTerm(term) with value from input element in html
    */
   public ngOnInit(): void {
@@ -879,11 +887,12 @@ export class BestProductComponent implements OnInit {
     if(checkbox.checked){
      term=this.transliterate(input.value);
     }
-    if(input.value.toString().length>0){
+    if(input.value.toString().length>0 && !this.onlySpaces(input.value)){
       this.service.getProductsByTerm(term).subscribe(products=>{
         this._products=products;
       })
     }
+    else console.log("input empty or all spaces")
 
   }
 }
