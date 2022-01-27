@@ -27,37 +27,14 @@ export class BestGenreComponent implements OnInit {
   }
 
   /**
-   * On class initialization calls getMovieByGenre(genre) for every supported by api genre
+   * On class initialization calls getMoviesByGenre()
    */
   ngOnInit(): void {
 
-    this.service.getMovieByGenre("ACTION").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("COMEDY").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("THRILLER").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    // this.service.getMovieByGenre("CRIMINAL").subscribe(movie=>{
-    //   this._criminalMovie= movie;
-    // });
-    this.service.getMovieByGenre("FANTASY").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("ANIMATION").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("DRAMA").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("SCI_FI").subscribe(movie=>{
-      this.movies.push(movie)
-    });
-    this.service.getMovieByGenre("HORROR").subscribe(movie=>{
-      this.movies.push(movie)
-    });
+    this.service.getMoviesByGenre().subscribe(movies=>{
+      this._movies=movies;
+    })
+
     this.initialized = true;
   }
 

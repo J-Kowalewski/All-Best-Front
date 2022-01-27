@@ -33,13 +33,15 @@ export class AppComponent implements OnInit{
    *Opens product page or reloads the page with given params
    */
   onClick() {
-    if(this.router.url!="/product"){
-      this.router.navigateByUrl("/product");
-    }
-    else{
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/product'])
-      })
+    const input = <HTMLInputElement> document.getElementById("product_id");
+    if(input.value.length!=0) {
+      if (this.router.url != "/product") {
+        this.router.navigateByUrl("/product");
+      } else {
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate(['/product'])
+        })
+      }
     }
   }
 

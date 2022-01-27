@@ -4,6 +4,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {GetMoviesResponse} from "../dto/get-movies-response";
+import { of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -27,20 +29,17 @@ export class MovieService {
    * @returns {Observable<Movie[]>}
    */
   getBestMovies(): Observable<Movie[]> {
-    return this.http.get('https://allbest-api.herokuapp.com/api/v1/movie/bestList')
-      .pipe(map(value => {
         let movies: Movie[] = [];
         fetch('https://allbest-api.herokuapp.com/api/v1/movie/bestList').then(res=>res.json()).then(data=>{
           data.forEach((movie: GetMovieResponse)=>{
             movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))
           })
         })
-        return movies;
-      }));
+    return of(movies);
   }
 
   /**
-   *Fetches movie by genre from api
+   *Fetches movie by genre from api - DEPRECATED
    * @param genre
    * @returns {Observable<Movie>}
    */
@@ -51,6 +50,21 @@ export class MovieService {
       }));
   }
 
+
+  /**
+   *Fetches list of best movies from every genre
+   * @returns {Observable<Movie[]>}
+   */
+  getMoviesByGenre(): Observable<Movie[]> {
+
+        let movies: Movie[] = [];
+        fetch('https://allbest-api.herokuapp.com/api/v1/movie/allgenres').then(res=>res.json()).then(data=>{
+          data.forEach((movie: GetMovieResponse)=>{
+            movies.push(new Movie(movie.title,movie.year,movie.genre,movie.description,movie.siteLink))
+          })
+        })
+        return of(movies);
+  }
   /**
    *Fetches best movie from api
    * @returns {Observable<Movie>}
