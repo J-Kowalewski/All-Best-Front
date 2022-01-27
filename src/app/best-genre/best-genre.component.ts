@@ -7,6 +7,10 @@ import {MovieService} from "../service/movie.service";
   templateUrl: './best-genre.component.html',
   styleUrls: ['./best-genre.component.css']
 })
+/**
+ * TypeScript class for best movies from every genre by FILMWEB
+ * @author Jakub Kowalewski
+ */
 export class BestGenreComponent implements OnInit {
 
   private service: MovieService;
@@ -22,6 +26,9 @@ export class BestGenreComponent implements OnInit {
     this.service = service;
   }
 
+  /**
+   * On class initialization calls getMovieByGenre(genre) for every supported by api genre
+   */
   ngOnInit(): void {
 
     this.service.getMovieByGenre("ACTION").subscribe(movie=>{

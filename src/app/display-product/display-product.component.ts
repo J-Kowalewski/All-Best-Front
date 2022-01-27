@@ -7,6 +7,10 @@ import {Product} from "../model/product";
   templateUrl: './display-product.component.html',
   styleUrls: ['./display-product.component.css']
 })
+/**
+ * TypeScript class for one product
+ * @author Jakub Kowalewski
+ */
 export class DisplayProductComponent implements OnInit {
 
   private _product!: Product;
@@ -23,6 +27,9 @@ export class DisplayProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Opens product site in a separate window
+   */
   btnClick() {
     window.open(this._product.siteLink, "_blank");
   }

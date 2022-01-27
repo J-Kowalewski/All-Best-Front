@@ -1,3 +1,7 @@
+/**
+ * Movie model
+ * @author Jakub Kowalewski
+ */
 export class Movie{
   private _title: string;
   private _year: string;

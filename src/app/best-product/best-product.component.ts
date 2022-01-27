@@ -7,6 +7,10 @@ import {ProductService} from "../service/product.service";
   templateUrl: './best-product.component.html',
   styleUrls: ['./best-product.component.css']
 })
+/**
+ * TypeScript class for products from EBAY
+ * @author Jakub Kowalewski
+ */
 export class BestProductComponent implements OnInit {
 
   private _products: Product[] = [];
@@ -25,6 +29,9 @@ export class BestProductComponent implements OnInit {
     this.service = service;
   }
 
+  /**
+   * On class initialization calls getProductsByTerm(term) with value from input element in html
+   */
   public ngOnInit(): void {
     const input = <HTMLInputElement> document.getElementById("product_id");
     if(input.value.toString().length>0){

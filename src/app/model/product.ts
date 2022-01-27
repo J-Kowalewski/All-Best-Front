@@ -1,3 +1,7 @@
+/**
+ * Product model
+ * @author Jakub Kowalewski
+ */
 export class Product{
   private _title: string;
   private _price: string;

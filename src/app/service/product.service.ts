@@ -9,6 +9,11 @@ import {GetProductsResponse} from "../dto/get-products-response";
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Product service
+ * @author Jakub Kowalewski
+ */
 export class ProductService {
 
   private http: HttpClient;
@@ -18,6 +23,11 @@ export class ProductService {
     this.http = http;
   }
 
+  /**
+   *Fetches list of products from api
+   * @param searchTerm
+   * @returns {Observable<Product[]>}
+   */
   getProductsByTerm(searchTerm: string): Observable<Product[]> {
     return this.http.get<GetProductsResponse>('https://allbest-api.herokuapp.com/api/v1/product/best/'+searchTerm)
       .pipe(map(value => {

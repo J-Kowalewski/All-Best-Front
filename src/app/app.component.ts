@@ -9,36 +9,51 @@ import {Movie} from "./model/movie";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+/**
+ * Main angular component
+ * @author Jakub Kowalewski
+ */
 export class AppComponent implements OnInit{
   title = 'All-Best-Front';
   service: MovieService;
   bestMovie!: Movie;
+  movie!:GetMovieResponse;
 
   constructor(private router: Router, service:MovieService) {
     this.service= service;
   }
-  movie!:GetMovieResponse;
+
   ngOnInit(): void {
       this.service.getBestMovie().subscribe(movie=>{
         this.bestMovie=movie;
       })
   }
 
+  /**
+   *Opens product page or reloads the page with given params
+   */
   onClick() {
     if(this.router.url!="/product"){
       this.router.navigateByUrl("/product");
     }
     else{
-      this.router.navigateByUrl('/genre', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/product'])
       })
     }
   }
 
+  /**
+   * Checks if user is on home page
+   * @returns {boolean}
+   */
   isHomePage(): boolean {
     return this.router.url=="/"
     }
 
+  /**
+   * Opens best movie in separate window
+   */
   btnClick() {
     window.open(this.bestMovie.siteLink, "_blank");
   }

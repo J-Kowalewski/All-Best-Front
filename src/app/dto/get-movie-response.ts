@@ -1,3 +1,7 @@
+/**
+ * Response template for movie
+ * @author Jakub Kowalewski
+ */
 export class GetMovieResponse{
   title!: string;
   year!: string;

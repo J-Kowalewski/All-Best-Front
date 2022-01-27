@@ -7,6 +7,10 @@ import {MovieService} from "../service/movie.service";
   templateUrl: './best-list.component.html',
   styleUrls: ['./best-list.component.css']
 })
+/**
+ * TypeScript class for list of best movies by IMDB
+ *@author Jakub Kowalewski
+ */
 export class BestListComponent implements OnInit {
 
   private _movies!: Movie[];
@@ -23,6 +27,9 @@ export class BestListComponent implements OnInit {
     this.service = service;
   }
 
+  /**
+   * On class initialization calls getBestMovies() and getBestMovie() (unused)
+   */
   ngOnInit(): void {
     this.service.getBestMovies().subscribe(movies=>{
       this._movies=movies;
